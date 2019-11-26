@@ -1,6 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"></html>
 <html>
-<header><title>TRD Nitro Tuner</title></header>
+<head>
+<title>TRD NITRO TUNER</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    table {
+        border: black;
+        border-style: solid;
+        border-collapse: collapse;
+    }
+    h1{
+        text-align: center;
+    }
+    h2{
+        text-align: center;
+        background: steelblue;
+    }
+</style>
+</head>
+
 <body>
-Hello world!!!
+    <div class="container">
+        <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <h2>TRD Logo</h2>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <h1>TRD Nitro Tuner</h1>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h2>Team Logo</h2>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-8">
+                <table>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Last Update</th>
+                        <th>Current</th>
+                        <th>Delta</th>
+                    </tr>
+                    <tr>
+                        <td>77.4</td>
+                        <td>Temperature</td>
+                        <td>73.2</td>
+                        <td>4.2</td>
+                    </tr>
+                    <tr>
+                            <td>77.4</td>
+                            <td>Humidity</td>
+                            <td>73.2</td>
+                            <td>4.2</td>
+                    </tr>
+                    <tr>
+                            <td>77.4</td>
+                            <td>Barometric Pressure</td>
+                            <td>73.2</td>
+                            <td><button type="button" class="btn btn-info">Info</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <h2>TUNEUP Box Placement</h2>
+            </div>
+            <div class="col-lg-4 col-sm-8">
+                <h2>Engine Box Placement</h2>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
