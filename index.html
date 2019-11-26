@@ -60,6 +60,13 @@
   color: white;
 }
 </style>
+  <script>
+
+    function calcDelta(ref,cur){
+      return ref - cur;
+    }
+
+  </script>
 </head>
 
 <body>
@@ -95,10 +102,11 @@
                         <th>Delta</th>
                     </tr>
                     <tr>
-                        <td>77.4</td>
+                        <td><input type="number"  id="refTemp" name="refTemp"  />
+                        </td>
                         <td>Temperature</td>
                         <td>73.2</td>
-                        <td>4.2</td>
+                        <td><input type="number" value=calcDelta(refTemp,77)</td>
                     </tr>
                     <tr>
                             <td>77.4</td>
