@@ -62,7 +62,7 @@
 }
 </style>
   <script>
-Access-Control-Allow-Origin: *
+response.addHeader("Access-Control-Allow-Origin", "*");
   readTextFile("file:///C:/WeatherPro/WeatherPro_Weather.txt");
 let delta = 5
     function calcDelta(ref,cur){
