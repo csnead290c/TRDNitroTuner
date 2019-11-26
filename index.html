@@ -61,10 +61,10 @@
 }
 </style>
   <script>
-
+let delta = 5
     function calcDelta(ref,cur){
-      return ref - cur;
-      alert(ref - cur)
+      delta =  ref - cur;
+      document.querySelector('#delta').innerHTML = delta;
     }
 
   </script>
@@ -107,7 +107,7 @@
                         </td>
                         <td>Temperature</td>
                         <td>73.2</td>
-                        <td><input type="number" /></td>
+                        <td id="delta"></td>
                     </tr>
                     <tr>
                             <td>77.4</td>
