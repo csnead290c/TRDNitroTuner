@@ -64,6 +64,7 @@
 
     function calcDelta(ref,cur){
       return ref - cur;
+      alert(ref - cur)
     }
 
   </script>
@@ -102,11 +103,11 @@
                         <th>Delta</th>
                     </tr>
                     <tr>
-                        <td><input type="number"  id="refTemp" name="refTemp"  />
+                        <td><input type="number"  id="refTemp" name="refTemp" onchange="calcDelta(this,77)"  />
                         </td>
                         <td>Temperature</td>
                         <td>73.2</td>
-                        <td><input type="number" value=calcDelta(refTemp,77)</td>
+                        <td><input type="number" /></td>
                     </tr>
                     <tr>
                             <td>77.4</td>
