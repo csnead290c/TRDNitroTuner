@@ -1,7 +1,7 @@
 table {
-    border-collapse: collapse;
-    text-align: center;
-    margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center;
+  margin: 0 auto;
 }
 th, td {
   border: solid 1px rgba(151,163,174,.3);
@@ -12,17 +12,17 @@ th {
   text-transform: uppercase;
 }
 h1{
-    text-align: center;
+  text-align: center;
 }
 h2{
-    text-align: center;
+  text-align: center;
 }
 .img-container {
-    text-align: center;
-    display: block;
-    max-width: 300px;
-    max-height: 100px;
-    margin: 0 auto;
+  text-align: center;
+  display: block;
+  max-width: 300px;
+  max-height: 100px;
+  margin: 0 auto;
 }
 
 .topnav {
@@ -52,8 +52,8 @@ h2{
   color: white;
 }
 input {
-    resize: horizontal;
-    width: 80px;
+  resize: horizontal;
+  width: 80px;
 }
 
 body{
@@ -61,14 +61,15 @@ body{
   margin:auto;
 }
 .row {
-  border: red;
+  border: green;
   border-style: dashed;
+  border-radius: 10px;
   margin: 10px
 }
 .column {
   float: left;
   width: 30%;
-  border: black;
+  border: red;
   border-style: solid;
   border-radius: 25px;
   margin: 10px

@@ -1,348 +1,312 @@
-<!DOCTYPE html>
-<html lang="en"></html>
-<html>
-<head>
-  <title>{{ title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="/static/css/default.css" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
-  <script src="https://cdn.auth0.com/js/lock/11.18/lock.min.js"></script>
+{% extends "layout.html" %}
 
-</head>
-
-<body>
-  <div class="topnav">
-    <a class="active" href="#tuningprogram">Tuning Program</a>
-    <a href="#runbook">Run Book</a>
-    <a href="#weather">Weather</a>
-    <a href="#fcdownforce">FC Downforce</a>
-    <a href="#tfdownforce">TF Downforce</a>
-    <a href="#etpredictor">ET Predictor</a>
-    <a href="#clutch">Clutch</a>
-    <a href="#setup">Setup</a>
-    <a href="#about">About</a>
+{% block body %}
+<div class="container">
+  <div class="row" >
+    <!-- <div class="column img-container">
+      <img src="https://i.pinimg.com/originals/bf/bb/ae/bfbbaedf79b66ed03a6a4f1557779ca8.png" width="95%" align="middle" margin="auto">
+    </div> -->
+  <div>
+    <h1>{{ title }}</h1>
   </div>
-    <div class="container">
-        <div class="row" >
-                <!-- <div class="column img-container">
-                    <img src="https://i.pinimg.com/originals/bf/bb/ae/bfbbaedf79b66ed03a6a4f1557779ca8.png" width="95%" align="middle" margin="auto">
-                </div> -->
-                <div>
-                    <h1>{{ title }}</h1>
-                    <button id="click">Click Me</button>
-                    <script>
-                    $('#click').click(function(){
-                      $.ajax({
-                        type: 'GET',
-                        url: '/data',
-                        success: function (response){
-                          alert(response);
-                        }
-                      });
-                    })
-
-                    </script>
-                </div>
-                <!-- <div class="column img-container">
-                    <img src="https://pitstopradio.net/wp-content/uploads/2018/09/mail-1-1.png" width="95%" align="middle" margin="auto">
-                </div> -->
-        </div>
-        <div class="row">
-            <div class="column">
-                <table>
-                    <tr>
-                        <th>Reference</th>
-                        <th>Last Update</th>
-                        <th>Current</th>
-                        <th>Delta</th>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refTemp" name="refTemp" align="center"  />
-                        </td>
-                        <td>Temperature</td>
-                        <td>
-                          <input type="number"  id="curTemp" name="curTemp" align="center"  />
-                        </td>
-                        <td><p id="delta">DEFAULT</p></td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refHumidity" name="refHumidity" align="center"  />
-                        </td>
-                        <td>Humidity</td>
-                        <td>
-                          <input type="number"  id="curHumidity" name="curHumidity" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refBaro" name="refBaro" align="center"  />
-                        </td>
-                        <td>Barometric Pressure</td>
-                        <td>
-                          <input type="number"  id="curBaro" name="curBaro" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refWaterGrains" name="refWaterGrains" align="center"  />
-                        </td>
-                        <td>Water Grains</td>
-                        <td>
-                          <input type="number"  id="curWaterGrains" name="curWaterGrains" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refDensityAltitude" name="refDensityAltitude" align="center"  />
-                        </td>
-                        <td>Density Altitude</td>
-                        <td>
-                          <input type="number"  id="curDensityAltitude" name="curDensityAltitude" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refAltitude" name="refAltitude" align="center"  />
-                        </td>
-                        <td>Altitude</td>
-                        <td>
-                          <input type="number"  id="curAltitude" name="curAltitude" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refDryBarometer" name="refDryBarometer" align="center"  />
-                        </td>
-                        <td>Dry Barometer</td>
-                        <td>
-                          <input type="number"  id="curDryBarometer" name="curDryBarometer" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refDensity" name="refDensity" align="center"  />
-                        </td>
-                        <td>Density</td>
-                        <td>
-                          <input type="number"  id="curDensity" name="curDensity" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refVaporPressure" name="refVaporPressure" align="center"  />
-                        </td>
-                        <td>Vapor Pressure</td>
-                        <td>
-                          <input type="number"  id="curVaporPressure" name="curVaporPressure" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refNitro" name="refNitro" align="center"  />
-                        </td>
-                        <td>Nitro</td>
-                        <td>
-                          <input type="number"  id="curNitro" name="curNitro" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refBlowerOD" name="refBlowerOD" align="center"  />
-                        </td>
-                        <td>Blower OD</td>
-                        <td>
-                          <input type="number"  id="curBlowerOD" name="curBlowerOD" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refCompNumber" name="refCompNumber" align="center"  />
-                        </td>
-                        <td>Right Comp #</td>
-                        <td>
-                          <input type="number"  id="curCompNumber" name="curCompNumber" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                          <input type="number"  id="refCompressionRatio" name="refCompressionRatio" align="center"  />
-                        </td>
-                        <td>Right Compression Ratio</td>
-                        <td>
-                          <input type="number"  id="curCompressionRatio" name="curCompressionRatio" align="center"  />
-                        </td>
-                        <td>4.2</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="column">
-              <table>
-                  <tr>
-                      <td>TUNEUP</td>
-                      <td>
-                        <input type="number"  id="tuneup" name="tuneup" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Timing Tuneup</td>
-                      <td>
-                        <input type="number"  id="timingTuneup" name="timingTuneup" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Blower OD Factor</td>
-                      <td>
-                        <input type="number"  id="blowerOdFactor" name="blowerOdFactor" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Zero OD</td>
-                      <td>
-                        <input type="number"  id="zeroOD" name="zeroOD" align="center"  />
-                      </td>
-                  </tr>
-              </table>
-              <table>
-                  <tr>
-                      <td>Dry Air Density</td>
-                      <td>
-                        <input type="number"  id="dryAirDensity" name="dryAirDensity" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Vapor Air Density</td>
-                      <td>
-                        <input type="number"  id="vaporAirDensity" name="vaporAirDensity" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Total Air / Vapor</td>
-                      <td>
-                        <input type="number"  id="totalAir" name="totalAir" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Dry Air Compression Factor</td>
-                      <td>
-                        <input type="number"  id="dryAirCompressionFactor" name="dryAirCompressionFactor" align="center"  />
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Total Compression Factor</td>
-                      <td>
-                        <input type="number"  id="totalCompressionFactor" name="totalCompressionFactor" align="center"  />
-                      </td>
-                  </tr>
-              </table>
-            </div>
-            <div class="column">
-              <table>
-                  <tr>
-                      <th>Left Bank</th>
-                      <th>Engine</th>
-                      <th>Right Bank</th>
-                      <th>AVG</th>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftDeck" name="leftDeck" align="center"  />
-                      </td>
-                      <td>Deck (in)</td>
-                      <td>
-                        <input type="number"  id="rightDeck" name="rightDeck" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftRod" name="leftRod" align="center"  />
-                      </td>
-                      <td>Rod Length Over Stock (in)</td>
-                      <td>
-                        <input type="number"  id="rightRod" name="rightRod" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftCompressionDistance" name="leftCompressionDistance" align="center"  />
-                      </td>
-                      <td>Compression Distance (in)</td>
-                      <td>
-                        <input type="number"  id="rightCompressionDistance" name="rightCompressionDistance" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftChamberVolume" name="leftChamberVolume" align="center"  />
-                      </td>
-                      <td>Chamber Volume (cc)</td>
-                      <td>
-                        <input type="number"  id="rightChamberVolume" name="rightChamberVolume" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftGasketThickness" name="leftGasketThickness" align="center"  />
-                      </td>
-                      <td>Gasket Thickness (in)</td>
-                      <td>
-                        <input type="number"  id="rightGasketThickness" name="rightGasketThickness" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftCompressionRatio" name="leftCompressionRatio" align="center"  />
-                      </td>
-                      <td>Compression Ratio</td>
-                      <td>
-                        <input type="number"  id="rightCompressionRatio" name="rightCompressionRatio" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftCompNumber" name="leftCompNumber" align="center"  />
-                      </td>
-                      <td>Comp #</td>
-                      <td>
-                        <input type="number"  id="rightCompNumber" name="rightCompNumber" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-                  <tr>
-                      <td>
-                        <input type="number"  id="leftCompFactor" name="leftCompFactor" align="center"  />
-                      </td>
-                      <td>Comp Factor</td>
-                      <td>
-                        <input type="number"  id="rightCompFactor" name="rightCompFactor" align="center"  />
-                      </td>
-                      <td><p id="delta">avg calc</p></td>
-                  </tr>
-              </table>
-            </div>
-        </div>
-        <div class="row">
-          <h1>Power Levels</h1>
-        </div>
+  <!-- <div class="column img-container">
+    <img src="https://pitstopradio.net/wp-content/uploads/2018/09/mail-1-1.png" width="95%" align="middle" margin="auto">
+  </div> -->
+  </div>
+  <div class="row">
+    <div class="column">
+      <table>
+        <tr>
+          <th>Reference</th>
+          <th>Last Update</th>
+          <th>Current</th>
+          <th>Delta</th>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refTemp" name="refTemp" align="center"  />
+          </td>
+          <td>Temperature</td>
+          <td>
+            <input type="number"  id="curTemp" name="curTemp" align="center"  />
+          </td>
+          <td><p id="delta">DEFAULT</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refHumidity" name="refHumidity" align="center"  />
+          </td>
+          <td>Humidity</td>
+          <td>
+            <input type="number"  id="curHumidity" name="curHumidity" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refBaro" name="refBaro" align="center"  />
+          </td>
+          <td>Barometric Pressure</td>
+          <td>
+            <input type="number"  id="curBaro" name="curBaro" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refWaterGrains" name="refWaterGrains" align="center"  />
+          </td>
+          <td>Water Grains</td>
+          <td>
+            <input type="number"  id="curWaterGrains" name="curWaterGrains" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refDensityAltitude" name="refDensityAltitude" align="center"  />
+          </td>
+          <td>Density Altitude</td>
+          <td>
+            <input type="number"  id="curDensityAltitude" name="curDensityAltitude" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refAltitude" name="refAltitude" align="center"  />
+          </td>
+          <td>Altitude</td>
+          <td>
+            <input type="number"  id="curAltitude" name="curAltitude" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refDryBarometer" name="refDryBarometer" align="center"  />
+          </td>
+          <td>Dry Barometer</td>
+          <td>
+            <input type="number"  id="curDryBarometer" name="curDryBarometer" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refDensity" name="refDensity" align="center"  />
+          </td>
+          <td>Density</td>
+          <td>
+            <input type="number"  id="curDensity" name="curDensity" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refVaporPressure" name="refVaporPressure" align="center"  />
+          </td>
+          <td>Vapor Pressure</td>
+          <td>
+            <input type="number"  id="curVaporPressure" name="curVaporPressure" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refNitro" name="refNitro" align="center"  />
+          </td>
+          <td>Nitro</td>
+          <td>
+            <input type="number"  id="curNitro" name="curNitro" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refBlowerOD" name="refBlowerOD" align="center"  />
+          </td>
+          <td>Blower OD</td>
+          <td>
+            <input type="number"  id="curBlowerOD" name="curBlowerOD" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refCompNumber" name="refCompNumber" align="center"  />
+          </td>
+          <td>Right Comp #</td>
+          <td>
+            <input type="number"  id="curCompNumber" name="curCompNumber" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="refCompressionRatio" name="refCompressionRatio" align="center"  />
+          </td>
+          <td>Right Compression Ratio</td>
+          <td>
+            <input type="number"  id="curCompressionRatio" name="curCompressionRatio" align="center"  />
+          </td>
+          <td>4.2</td>
+        </tr>
+      </table>
     </div>
-</body>
-</html>
+    <div class="column">
+      <table>
+        <tr>
+          <td>TUNEUP</td>
+          <td>
+            <input type="number"  id="tuneup" name="tuneup" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Timing Tuneup</td>
+          <td>
+            <input type="number"  id="timingTuneup" name="timingTuneup" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Blower OD Factor</td>
+          <td>
+            <input type="number"  id="blowerOdFactor" name="blowerOdFactor" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Zero OD</td>
+          <td>
+            <input type="number"  id="zeroOD" name="zeroOD" align="center"  />
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>Dry Air Density</td>
+          <td>
+            <input type="number"  id="dryAirDensity" name="dryAirDensity" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Vapor Air Density</td>
+          <td>
+            <input type="number"  id="vaporAirDensity" name="vaporAirDensity" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Total Air / Vapor</td>
+          <td>
+            <input type="number"  id="totalAir" name="totalAir" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Dry Air Compression Factor</td>
+          <td>
+            <input type="number"  id="dryAirCompressionFactor" name="dryAirCompressionFactor" align="center"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Total Compression Factor</td>
+          <td>
+            <input type="number"  id="totalCompressionFactor" name="totalCompressionFactor" align="center"  />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="column">
+      <table>
+        <tr>
+          <th>Left Bank</th>
+          <th>Engine</th>
+          <th>Right Bank</th>
+          <th>AVG</th>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftDeck" name="leftDeck" align="center"  />
+          </td>
+          <td>Deck (in)</td>
+          <td>
+            <input type="number"  id="rightDeck" name="rightDeck" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftRod" name="leftRod" align="center"  />
+          </td>
+          <td>Rod Length Over Stock (in)</td>
+          <td>
+            <input type="number"  id="rightRod" name="rightRod" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftCompressionDistance" name="leftCompressionDistance" align="center"  />
+          </td>
+          <td>Compression Distance (in)</td>
+          <td>
+            <input type="number"  id="rightCompressionDistance" name="rightCompressionDistance" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftChamberVolume" name="leftChamberVolume" align="center"  />
+          </td>
+          <td>Chamber Volume (cc)</td>
+          <td>
+            <input type="number"  id="rightChamberVolume" name="rightChamberVolume" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftGasketThickness" name="leftGasketThickness" align="center"  />
+          </td>
+          <td>Gasket Thickness (in)</td>
+          <td>
+            <input type="number"  id="rightGasketThickness" name="rightGasketThickness" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftCompressionRatio" name="leftCompressionRatio" align="center"  />
+          </td>
+          <td>Compression Ratio</td>
+          <td>
+            <input type="number"  id="rightCompressionRatio" name="rightCompressionRatio" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftCompNumber" name="leftCompNumber" align="center"  />
+          </td>
+          <td>Comp #</td>
+          <td>
+            <input type="number"  id="rightCompNumber" name="rightCompNumber" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="number"  id="leftCompFactor" name="leftCompFactor" align="center"  />
+          </td>
+          <td>Comp Factor</td>
+          <td>
+            <input type="number"  id="rightCompFactor" name="rightCompFactor" align="center"  />
+          </td>
+          <td><p id="delta">avg calc</p></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <h1>Power Levels</h1>
+  </div>
+</div>
+{% endblock %}
