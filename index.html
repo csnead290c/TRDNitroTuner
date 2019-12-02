@@ -72,6 +72,20 @@
     input:focus {
         min-width: 50px;
     }
+    body{
+    	width:100%;
+    	margin:auto;
+    }
+    #wrapper{
+    	display:block;
+    	width:90%;
+    	margin:auto;
+    }
+    #content{
+    	display:block;
+    	width:80%;
+    	margin:auto;
+    }
 </style>
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
 <script src="https://cdn.auth0.com/js/lock/11.18/lock.min.js"></script>
@@ -110,8 +124,8 @@ let delta = 5
                     <img src="https://pitstopradio.net/wp-content/uploads/2018/09/mail-1-1.png" width="95%" align="middle" margin="auto">
                 </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-sm-12">
+        <div class="row" id="wrapper">
+            <div class="col-lg-4 col-sm-12" id="content">
                 <table>
                     <tr>
                         <th>Reference</th>
@@ -251,7 +265,7 @@ let delta = 5
                     </tr>
                 </table>
             </div>
-            <div class="col-lg-4 col-sm-12" background="steelblue">
+            <div class="col-lg-4 col-sm-12" background="steelblue" id="content">
               <table>
                   <tr>
                       <td>TUNEUP</td>
@@ -311,7 +325,7 @@ let delta = 5
                   </tr>
               </table>
             </div>
-            <div class="col-lg-4 col-sm-12">
+            <div class="col-lg-4 col-sm-12" id="content">
               <table>
                   <tr>
                       <th>Left Bank</th>
