@@ -2,14 +2,13 @@
 <html lang="en"></html>
 <html>
 <head>
-  <title>TRD NITRO TUNER</title>
+  <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="default.css" rel="stylesheet" type="text/css">
+  <link href="/static/css/default.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
   <script src="https://cdn.auth0.com/js/lock/11.18/lock.min.js"></script>
-  <script>
 
-  </script>
 </head>
 
 <body>
@@ -30,7 +29,20 @@
                     <img src="https://i.pinimg.com/originals/bf/bb/ae/bfbbaedf79b66ed03a6a4f1557779ca8.png" width="95%" align="middle" margin="auto">
                 </div> -->
                 <div>
-                    <h1>TRD Nitro Tuner</h1>
+                    <h1>{{ title }}</h1>
+                    <button id="click">Click Me</button>
+                    <script>
+                    $('#click').click(function(){
+                      $.ajax({
+                        type: 'GET',
+                        url: '/data',
+                        success: function (response){
+                          alert(response);
+                        }
+                      });
+                    })
+
+                    </script>
                 </div>
                 <!-- <div class="column img-container">
                     <img src="https://pitstopradio.net/wp-content/uploads/2018/09/mail-1-1.png" width="95%" align="middle" margin="auto">
