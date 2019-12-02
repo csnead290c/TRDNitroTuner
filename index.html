@@ -64,15 +64,22 @@
     	width:100%;
     	margin:auto;
     }
-    #wrapper{
-    	display:block;
-    	width:90%;
-    	margin:auto;
+    .column {
+      float: left;
+      width: 33.33%;
     }
-    #content{
-    	display:block;
-    	width:80%;
-    	margin:auto;
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Responsive layout - when the screen is less than 600px wide, make the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
     }
 </style>
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
@@ -101,19 +108,19 @@ let delta = 5
     <a href="#about">About</a>
   </div>
     <div class="container">
-        <div class="row"id="wrapper">
-                <div class="img-container" id="content">
+        <div class="row" >
+                <div class="column img-container">
                     <img src="https://i.pinimg.com/originals/bf/bb/ae/bfbbaedf79b66ed03a6a4f1557779ca8.png" width="95%" align="middle" margin="auto">
                 </div>
-                <div id="content">
+                <div class="column">
                     <h1>TRD Nitro Tuner</h1>
                 </div>
-                <div class="img-container" id="content">
+                <div class="column img-container">
                     <img src="https://pitstopradio.net/wp-content/uploads/2018/09/mail-1-1.png" width="95%" align="middle" margin="auto">
                 </div>
         </div>
-        <div class="row" id="wrapper">
-            <div id="content">
+        <div class="row">
+            <div class="column">
                 <table>
                     <tr>
                         <th>Reference</th>
@@ -253,7 +260,7 @@ let delta = 5
                     </tr>
                 </table>
             </div>
-            <div id="content">
+            <div class="column">
               <table>
                   <tr>
                       <td>TUNEUP</td>
@@ -313,7 +320,7 @@ let delta = 5
                   </tr>
               </table>
             </div>
-            <div id="content">
+            <div class="column">
               <table>
                   <tr>
                       <th>Left Bank</th>
